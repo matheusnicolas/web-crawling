@@ -4,7 +4,7 @@ import json
 
 data_list = []
 final_list = []
-page_index = 9985
+page_index = 1
 still_sending = True
 
 def url_request(i):
@@ -38,8 +38,8 @@ def extractToJson(list_data):
     data['numbers'] = []
     for element in list_data:
         data['numbers'].append(element)
-        with open('static/data.json', 'w') as outfile:
-            json.dump(data, outfile)
+    with open('static/data.json', 'w') as outfile:
+        json.dump(data, outfile)
 
 while(still_sending):
     response = url_request(page_index)
@@ -47,7 +47,6 @@ while(still_sending):
         dados = response.json()['numbers']
         if(dados):
             for d in dados:
-                print(d)
                 data_list.append(d)
             #print('Dado extraído com sucesso da página {0}'.format(page_index))
             page_index += 1
@@ -59,6 +58,8 @@ while(still_sending):
 
     else:
         print('Ocorreu um erro na requisição, tentando novamente para a página {0}'.format(page_index))
+
+print(len(final_list))
 
 quickSort(final_list, 0, len(final_list) - 1)
 extractToJson(final_list)
