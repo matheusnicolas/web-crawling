@@ -4,6 +4,6 @@
 
 <p>To work, you must install requests and flask:</p>
 </br>
- *$pip install requests
- *$pip install flask
+* $pip install requests
+* $pip install flask
   
